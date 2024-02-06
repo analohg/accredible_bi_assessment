@@ -9,7 +9,7 @@ WHERE stage_name IN ('Discovery', 'Qualified', 'Proof of Value', 'Proposal/Prici
 GROUP By 1
 ),
 
--- Note that sales_funnel table is our final modelled table from and has been saved as a materialized view
+-- Note that sales_funnel table is our final modelled table and has been saved as a materialized view
 destination as (SELECT 
   stage_name,
   COUNT(*) as deal_count_destination
