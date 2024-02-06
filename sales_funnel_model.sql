@@ -11,7 +11,7 @@ WITH deal_pipeline AS (
       deal_id,
       stage_created_at,
       stage_name,
-      -- create stage_index column to help me order the stages
+      -- create stage_index column to help me order the stages of a deal
       CASE 
         WHEN stage_name = 'Discovery' THEN 1
         WHEN stage_name = 'Qualified' THEN 2
