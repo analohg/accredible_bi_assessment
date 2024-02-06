@@ -48,5 +48,4 @@ ORDER BY 1,2
 SELECT 
   *
 FROM sales_funnel_model
-WHERE stage_name IN ('Closed Won')
 
