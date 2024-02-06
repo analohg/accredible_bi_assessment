@@ -35,7 +35,7 @@ sales_funnel_model AS (SELECT
   -- Not all deal_id's present in the 'deal_pipeline_stages' table are present in the 'deals' table so I replace cases where amount will be NULL to Zero (0)
   CASE WHEN d.amount_in_home_currency IS NULL THEN 0 ELSE d.AMOUNT_IN_HOME_CURRENCY END  as deal_amount,
 
-  -- Since some deal_id's are not present in the 'deals' table they won't have a value in the close_date column. So I use a window function (MAX) to replace instances where the close_date will otherwose be NULL with the most recent stage_created_at for each deal_id. This way, I have a value for all records in the close_date column  
+  -- Since some deal_id's are not present in the 'deals' table they won't have a value in the close_date column. So I use a window function (MAX) to replace instances where the close_date will otherwise be NULL with the most recent stage_created_at for each deal_id. This way, I have a value for all records in the close_date column  
   CASE WHEN d.CLOSE_DATE IS NOT NULL THEN d.close_date ELSE MAX(stage_created_at) OVER (PARTITION BY deal_id) END as close_date,
 
   -- For instances where the deal_source_type will be null, I replace this with None
